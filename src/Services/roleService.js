@@ -1,5 +1,5 @@
  const Role = require('../models/Role');
-const ApiError = require('../utils/apiError');
+const ApiError = require('../utils/ApiError');
 const { HTTP_STATUS } = require('../utils/constants');
 
 class RoleService {

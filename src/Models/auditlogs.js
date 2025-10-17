@@ -10,14 +10,7 @@ const auditLogSchema = new mongoose.Schema({
     type: String, // e.g. LOGIN, CREATE_USER, DELETE_FILE
     required: true
   },
-  resource: {
-    type: String, // What resource was affected (User, File, Role)
-    required: true
-  },
-  resourceId: {
-    type: mongoose.Schema.Types.ObjectId, // Optional → specific resource ID
-    refPath: "resource", // Dynamic reference (User, File, etc.)
-  },
+
   ipAddress: {
     type: String, // Track IP address for security
   },

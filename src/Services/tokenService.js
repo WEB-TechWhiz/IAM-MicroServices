@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config/environment');
-const ApiError = require('../utils/apiError');
+const ApiError = require('../utils/ApiError');
 const { HTTP_STATUS } = require('../utils/constants');
 
 class TokenService {

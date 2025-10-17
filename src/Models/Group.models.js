@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import User from "./User.model"
 const GroupShema=mongoose.Schema(
     {
-       groupName:{
+       name:{
         type:String,
        },
        description:{
@@ -10,7 +10,7 @@ const GroupShema=mongoose.Schema(
        },
        member:{
         type:Schema.Types.ObjectId,
-        ref:User
+        ref:"Role"
        } 
     },{timeStamp:true})
 

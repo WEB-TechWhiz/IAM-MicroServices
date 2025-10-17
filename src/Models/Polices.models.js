@@ -2,7 +2,7 @@ import mongoose,{Schema} from "mongoose";
 // Policies define what actions are allowed/denied.
 const PolicieSchema= new Schema(
     {
-        policeName:{
+        name:{
             type:String,
         },
         description:{
@@ -12,8 +12,7 @@ const PolicieSchema= new Schema(
             type:string,
             default:'v1',
         },
-        attachementCount:{
-            type:Number,
-        }
+        actions:[{type:String}],
+        resources: [{ type: String }],
     },{timeStamp:true})
 export const Polices=mongoose.model("Polices",PolicieSchema);                        

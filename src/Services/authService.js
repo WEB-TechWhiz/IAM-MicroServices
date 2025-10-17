@@ -1,7 +1,7 @@
 //  const User = require('../models/User');
 // const Session = require('../models/Session');
 // const tokenService = require('./tokenService');
-// const ApiError = require('../utils/apiError');
+// const ApiError = require('../utils/ApiError');
 // const { HTTP_STATUS } = require('../utils/constants');
 // const logger = require('../utils/logger');
 

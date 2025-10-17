@@ -1,24 +1,28 @@
-// user ha ya nahi ha 
-import { User } from "../Models/User.model";
-import { apiError } from "../utility/apiEError";
-import { asyncHandler } from "../utility/asyncHandler";
-import jwt from 'jsonwebtoken'
+import { ApiError } from "../utility/ApiError.js";
+import { asyncHandler } from "../utility/asyncHandler.js";
+import jwt from "jsonwebtoken"
+import { User } from "../Models/User.model.js";
 
+export const verifyJWT = asyncHandler(async(req, _, next) => {
+  try {
+    const token = (
+      req.cookies?.accessToken ||
+      req.header("Authorization")?.replace("Bearer ","")
+    );
+    if (!token || typeof token !== "string" || token.trim() === "") {
+      throw new ApiError(401, "Unauthorized request: Token missing or invalid");
+    }
 
-export const verifyJWT=asyncHandler(async(req ,res ,next)=>{
- try {
-     const token =  req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer","")
-     if(!token){
-       throw new apiError(401,"unauthorized request")
-     }
-    const decodedToken = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
-     const user = await User.findById(decodedToken?._id).select("-password -RefrenceToken")
-     if(!user){
-       throw new apiError(401,"Invalid Access Token")
-     }
-     req.user=user;
-     next()
- } catch (error) {
-     throw new apiError(401,error?.message || "invalid access token")
- }
-})
+    const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    // Use the correct field name: "-password -RefrenceToken" if that's your schema
+    const user = await User.findById(decodedToken?._id).select("-password -RefrenceToken");
+    if (!user) {
+      throw new ApiError(401, "Invalid Access Token");
+    }
+    req.user = user;
+    next();
+  } catch (error) {
+    throw new ApiError(401, error?.message || "Invalid access token");
+  }
+});
