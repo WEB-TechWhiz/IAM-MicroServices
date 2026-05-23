@@ -24,4 +24,3 @@ router.route("/logout").post(verifyJWT, logoutUser);
 export default router;
 
 
-// eyJBQ0NFU1NfVE9LRU5fU0VDUkVUIjoiIiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VybmFtZSI6ImNvbWFubWFuIiwiZW1haWwiOiJzdW1pdDAwOUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InJvaGl0a3VAMjAifQ.tDiCcW0tP594eMfRrKnDAKOzKzrBA-6H__wctLAM8jY

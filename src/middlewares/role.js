@@ -7,6 +7,7 @@ export const roleMiddleware = (...allowedRoles) => {
     if (!req.user || !req.user.role) {
       return next(new ApiError(401, "Unauthorized: user not authenticated or role missing"));
     }
+    
 
     // Check if user's role is in allowed roles
     if (!allowedRoles.includes(req.user.role)) {
